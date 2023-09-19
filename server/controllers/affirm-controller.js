@@ -57,9 +57,28 @@ async function updateAffirmation(req, res, next) {
 }
 
 //delete affirmation
+async function deleteAffirmation(req,res,next){
+    try{
+        const existingAffirmation = await Affirmation.findById(req.params.id);
+        if(existingAffirmation){
+            try{
+                await Affirmation.findByIdAndDelete(req.params.id);
+                res.status(200).json("affirmation deleted");
+            }catch(err){
+                res.status(500).json(err);
+            };
+        }else{
+            res.status(500).json("affirmation does not exist");
+        }
+    }catch(err){
+        res.status(500).json(err);
+    };
+
+}
 
 module.exports = {
     getAffirmations,
     createAffirmation,
-    updateAffirmation
+    updateAffirmation,
+    deleteAffirmation
 };
