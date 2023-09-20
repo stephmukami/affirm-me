@@ -55,7 +55,7 @@ router.post('/', (req, res, next) => {
       }
   
       // Generate a JWT with relevant user information
-      const token = jwt.sign({ user_id: user.id, username: user.username }, process.env.JWT_SECRET); 
+      const token = jwt.sign({ user_id: user.id, username: user.username }, process.env.JWT_SECRET,{expiresIn:'1d'}); 
   
       // Send the JWT to the client
       return res.status(200).json({ message: 'User logged in', token });
