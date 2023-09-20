@@ -9,13 +9,13 @@ require('dotenv').config();
 
 const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 
-const User = require('./models/User')
+const authenticateJWT = require('./middlewares/jwt-middleware');
 
 
 const usersRouter = require('./routes/users');
 const affirmationsRouter = require('./routes/affirmations');
+const loginRouter = require('./routes/login')
 
 const app = express();
 
@@ -43,37 +43,6 @@ const connectDB = async () => {
 };
 connectDB()
 
-//1.Setting up Local strategy
-passport.use(
-  new LocalStrategy(async(username, password, done) => {
-    try {
-      const user = await User.findOne({ username: username });
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      };
-      const match = await bcrypt.compare(password, user.password);
-      if ( !match) {
-        return done(null, false, { message: "Incorrect password" });
-      };
-      return done(null, user);
-    } catch(err) {
-      return done(err);
-    };
-  })
-);
-//2,3. sessions and serializations
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async function(id, done) {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch(err) {
-    done(err);
-  };
-});
 
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -82,8 +51,9 @@ app.use(passport.session());
 
 //routes
 
-app.use('/api/users', usersRouter);
+app.use('/api/users',  usersRouter);
 app.use('/api/affirmations',affirmationsRouter);
+app.use('/api/login',loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

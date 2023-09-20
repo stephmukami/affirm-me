@@ -40,6 +40,9 @@ async function getUsers(req,res,nex){
         try {
           const fetchedUsers = await User.find();
           // Create a new array with the `password` field removed from each user object
+          //toObject only gets changes one record so you can destructure like this                
+          // const {password, ...others} = updatedUser._doc;
+
           const usersWithoutPasswords = fetchedUsers.map(user => {
             const { password, ...others } = user.toObject();
             return others;
@@ -51,11 +54,11 @@ async function getUsers(req,res,nex){
         }
 }
 
-//edit user
+//edit user 
 async function editUser(req,res,next){
     try{
         const user = await User.findById(req.params.id);
-        if (user.username == req.body.username){
+        if (user){
             try{
                 const updatedUser = await User.findByIdAndUpdate(
                     req.params.id,
@@ -64,7 +67,7 @@ async function editUser(req,res,next){
                     },
                     {new:true}
                 );
-                const {password, ...others} = updatedUser
+                const {password, ...others} = updatedUser._doc;
                 res.status(200).json(others);
 
             }catch(err){
