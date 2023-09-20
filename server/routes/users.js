@@ -1,7 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user-controller');
-const authenticateJWT = require('../middlewares/jwt-middleware')
+const authenticateJWT = require('../middlewares/jwt-middleware');
+
+// Set up CORS for this specific route
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5173');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
 
 //get a single user?(username or id?)
 

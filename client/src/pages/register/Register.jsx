@@ -1,6 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import axios from "axios";
 export default function Register(){
+
+    async function test(){
+        try{
+            const res = await axios.get('http://127.0.0.1:3000/api/users');
+            console.log(res);
+        }catch(err){
+            console.log(err);
+        };
+    }
+    test();
+
     return(
         <>
         <h2>Register as a new user</h2>

@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 
@@ -60,6 +61,20 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+//handling CORS
+app.use(cors({
+  origin: 'http://127.0.0.1:5173',
+  credentials: true,  // Include credentials (e.g., cookies)
+}));
+
+// Add this middleware to set the appropriate headers
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5173');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
