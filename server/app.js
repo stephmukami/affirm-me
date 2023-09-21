@@ -11,8 +11,6 @@ require('dotenv').config();
 const session = require("express-session");
 const passport = require("passport");
 
-const authenticateJWT = require('./middlewares/jwt-middleware');
-
 
 const usersRouter = require('./routes/users');
 const affirmationsRouter = require('./routes/affirmations');

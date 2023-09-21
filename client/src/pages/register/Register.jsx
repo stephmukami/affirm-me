@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 export default function Register(){
@@ -21,6 +21,7 @@ const [details,setDetails] = useState(
 
     )
   };
+  
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try{
@@ -32,7 +33,7 @@ const [details,setDetails] = useState(
 
             }
         );
-        console.log(details);
+        console.log('Submitted details:', details);
           res.data && window.location.replace("/login");
     }catch(err){
         setError(true);
@@ -41,15 +42,7 @@ const [details,setDetails] = useState(
         console.log(err);
     };
   };
-    async function test(){
-        try{
-            const res = await axios.get('http://127.0.0.1:3000/api/users');
-            //console.log(res);
-        }catch(err){
-            console.log(err);
-        };
-    }
-    test();
+ 
 
     return(
         <>
