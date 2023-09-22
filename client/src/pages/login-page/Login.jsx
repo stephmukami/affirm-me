@@ -1,9 +1,13 @@
-import React ,{useState,useEffect}from 'react'
+import React ,{useState,useEffect,useContext} from 'react'
 import {Link} from 'react-router-dom';
 import axios from'axios';
+import { UserContext } from '../../Context/Context';
 export default function Login(){
+
+    const { setContext,context } = useContext(UserContext);
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+    const [loggedIn,setLoggedIn] = useState(false);
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -19,8 +23,16 @@ export default function Login(){
             const token = res.data.token;
             localStorage.setItem('token',token);
 
+       
             console.log('success');
             console.log(token);
+
+            setLoggedIn(true);
+            setContext({
+                username:username,
+                password:password,
+                token: localStorage.getItem('token') || '',
+              });
            res.data && window.location.replace("/home");
         }catch(err){
             console.log('error occurred');
