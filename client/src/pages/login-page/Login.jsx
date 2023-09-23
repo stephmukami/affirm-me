@@ -1,14 +1,14 @@
 import React ,{useState,useEffect,useContext} from 'react'
 import {Link} from 'react-router-dom';
 import axios from'axios';
-import { UserContext } from '../../Context/Context';
+import { UserContext } from '../../Context/UserContext';
 export default function Login(){
 
-    const { setContext,context } = useContext(UserContext);
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
-    const [loggedIn,setLoggedIn] = useState(false);
+    const {userValue,setUserValue} = useContext(UserContext);
 
+ 
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
@@ -17,29 +17,22 @@ export default function Login(){
                 password
             });
 
-            console.log(username)
-            console.log(password)
-
             const token = res.data.token;
+            const updatedUserValue = {
+                ...userValue,
+                username,
+                password,
+                token
+              };
+              setUserValue(updatedUserValue);
             localStorage.setItem('token',token);
-
-       
-            console.log('success');
-            console.log(token);
-
-            setLoggedIn(true);
-            setContext({
-                username:username,
-                password:password,
-                token: localStorage.getItem('token') || '',
-              });
+            localStorage.setItem('userValue', JSON.stringify(updatedUserValue));     
            res.data && window.location.replace("/home");
         }catch(err){
             console.log('error occurred');
             console.log(err);
         };
     }
-
 
 
     return(
@@ -69,4 +62,3 @@ export default function Login(){
         </>
     )
 }
-

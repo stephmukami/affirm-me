@@ -1,15 +1,20 @@
-import React from 'react';
+import React ,{useContext}from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import Sidebar from '../../components/sidebar/Sidebar';
-import { UserProvider } from '../../Context/Context';
+import { UserContext } from '../../Context/UserContext';
+import AffirmationSection from '../../components/affirmation/AffirmationSection';
  export default function Home(){
+    const {userValue,setUserValue} = useContext(UserContext);
     return (
-        <UserProvider>
+        <UserContext.Provider value={{userValue,setUserValue}}>
             <div>
-                <Sidebar/>
                 <Navbar/>
+                <div className="home-page">
+                <Sidebar/>
+                 <AffirmationSection/>
+                </div>
             </div>
-        </UserProvider>
+        </UserContext.Provider>
         
     )
  }

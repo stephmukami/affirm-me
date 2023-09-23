@@ -1,19 +1,17 @@
 import React, {useContext,useState,useEffect} from 'react'
-import { UserContext } from '../../Context/Context';
-
+import { UserContext } from '../../Context/UserContext';
 export default function Navbar() {
-  const { context } = useContext(UserContext);
-  const [username, setUsername] = useState('');
 
-  useEffect(() => {
-    setUsername(context.username);
-    console.log('Updated context:', context);  // Log the updated context here
-  }, [context]);
-
+  const { userValue } = useContext(UserContext);
+console.log(userValue);
   return (
     <>
       <div>
-        <div>Hello, {username}</div>
+        {userValue && (
+          <div>
+            Hello, {userValue.username}. Token: {userValue.token}
+          </div>
+        )}
       </div>
     </>
   );
