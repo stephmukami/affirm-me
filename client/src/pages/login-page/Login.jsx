@@ -7,7 +7,7 @@ export default function Login(){
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const {userValue,setUserValue} = useContext(UserContext);
-
+    const [error,setError] = useState('')
  
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -31,6 +31,7 @@ export default function Login(){
         }catch(err){
             console.log('error occurred');
             console.log(err);
+            setError('Incorrect username or password');
         };
     }
 
@@ -59,6 +60,9 @@ export default function Login(){
                 <button>BACK</button>
             </Link>
         </form>
+        <p className='login-error'>
+        {error && error}
+        </p>
         </>
     )
 }

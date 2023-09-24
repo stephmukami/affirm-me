@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const session = require("express-session");
 const passport = require("passport");
-
+const LocalStrategy = require("passport-local").Strategy;
 
 const usersRouter = require('./routes/users');
 const affirmationsRouter = require('./routes/affirmations');
@@ -53,6 +53,16 @@ app.use(passport.session());
 app.use('/api/users',  usersRouter);
 app.use('/api/affirmations',affirmationsRouter);
 app.use('/api/login',loginRouter);
+
+//logging out 
+app.get("/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

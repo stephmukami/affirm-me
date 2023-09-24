@@ -1,0 +1,18 @@
+.affirmation-section{
+    flex:8;
+    border: 1px solid purple;
+}
+svg{
+    height:20px;
+    width: 20px;
+}
+.single-affirmation{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid brown;
+}
+.controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

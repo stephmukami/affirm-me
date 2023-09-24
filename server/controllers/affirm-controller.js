@@ -11,6 +11,18 @@ async function getAffirmations(req,res,next){
         console.log(err);
     };
 }
+//get single affirmation
+async function getSingleAffirmation(req, res, next) {
+    const userId = req.params.id; // Assuming you have authentication middleware setting req.user with the user info
+
+    try {
+        const affirmations = await Affirmation.find({ author: userId }).lean();
+        res.status(200).json(affirmations);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+}
 //post affirmations  (find a way to get the username and user id when the person is logged in)
 async function createAffirmation(req,res,next){
     const {affirmation,author} = req.body;
@@ -81,5 +93,6 @@ module.exports = {
     getAffirmations,
     createAffirmation,
     updateAffirmation,
-    deleteAffirmation
+    deleteAffirmation,
+    getSingleAffirmation
 };
