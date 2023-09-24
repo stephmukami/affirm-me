@@ -13,7 +13,7 @@ export default function Sidebar() {
     <div className='sidebar'>
       SIDEBAR
       <button onClick={handleLogout}>LOG OUT</button>
-      <Link to='/new-affirmation'>
+      <Link to='/create'>
         <button>ADD NEW AFFIRMATION</button>
       </Link>
       </div>

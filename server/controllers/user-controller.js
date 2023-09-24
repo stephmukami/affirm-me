@@ -53,6 +53,23 @@ async function getUsers(req,res,nex){
           res.status(500).json(err);
         }
 }
+//get single user
+async function getSingleUser(req, res, next) {
+  const { username } = req.params;
+
+  try {
+      const user = await User.findOne({ username });
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+
+      const userinfo = await User.find( user ).lean();
+      res.status(200).json(userinfo);
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+  }
+}
 
 //edit user 
 async function editUser(req,res,next){
@@ -82,6 +99,7 @@ async function editUser(req,res,next){
     }
 }
 
+
 //delete user
 async function deleteUser(req, res, next) {
     try {
@@ -108,5 +126,6 @@ module.exports = {
     createUser,
     getUsers,
     editUser,
-    deleteUser
+    deleteUser,
+    getSingleUser
 };

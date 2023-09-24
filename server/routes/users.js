@@ -12,10 +12,10 @@ router.use((req, res, next) => {
     next();
   });
 
-//get a single user?(username or id?)
 
-/* GET all users l */
 router.get('/',userController.getUsers)
+
+router.get('/:username',userController.getSingleUser)
 
 router.post('/',userController.createUser);
 

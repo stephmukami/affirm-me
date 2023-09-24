@@ -4,6 +4,7 @@ import Landing from './pages/landing-page/Landing'
 import Login from './pages/login-page/Login'
 import Register from './pages/register/Register'
 import Home from './pages/home-page/Home'
+import Create from './pages/create-page/Create'
 import { useState ,useEffect} from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { UserContext } from './Context/UserContext'
@@ -27,6 +28,7 @@ function App() {
             <Route path ="/register" element = { <Register/>} />
             <Route path ="/login" element = {<Login/>}/>
             <Route path="/home" element = {<Home/>}/>
+            <Route path="/create" element = {<Create/>}/>
           </Routes>
        
       </BrowserRouter>

@@ -11,23 +11,29 @@ async function getAffirmations(req,res,next){
         console.log(err);
     };
 }
-//get single affirmation
+//get single users  affirmation
 async function getSingleAffirmation(req, res, next) {
     const { username } = req.params;
-
+  
     try {
-        const user = await User.findOne({ username });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        const affirmations = await Affirmation.find({ author: user._id }).lean();
-        res.status(200).json(affirmations);
+      const affirmations = await Affirmation.find({ author: username }).lean();
+  
+      if (!affirmations || affirmations.length === 0) {
+        return res.status(404).json({ error: 'No affirmations found for this user' });
+      }
+  
+      res.status(200).json(affirmations);
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+      console.log(err);
+      res.status(500).json(err);
     }
-}
+  }
+  
+  
+  
+  
+  
+  
 //post affirmations  (find a way to get the username and user id when the person is logged in)
 async function createAffirmation(req,res,next){
     const {affirmation,author} = req.body;
