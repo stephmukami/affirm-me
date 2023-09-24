@@ -1,25 +1,39 @@
-import React, {useEffect,useState} from 'react'
+import React, {useEffect,useState,useContext} from 'react'
 import './affirmationSection.css'
 import axios from'axios';
 import SingleAffirmation from './SingleAffirmation'
+import { UserContext } from '../../Context/UserContext';
 export default  function  AffirmationSection() {
 
   const [ affirmations,setAffirmations] = useState([]);
-  //should it run once or?
-  
-  useEffect(() => {
-    // Fetch affirmations for the logged-in user
-    const fetchAffirmations = async () => {
-        try {
-            const response = await axios.get('http://127.0.0.1:3000/api/affirmations');
-            setAffirmations(response.data);
-        } catch (error) {
-            console.error('Error fetching affirmations:', error);
-        }
-    };
+  //const [username, setUsername] = useState('');
+  const { userValue } = useContext(UserContext);
+  const username = userValue.username;
+//   useEffect(() => {
+//     // Fetch the username from local storage
+//     const storedUsername = localStorage.getItem('username');
+//     console.log('stored username');
+//     console.log(storedUsername);
+//     if (storedUsername) {
+//         setUsername(storedUsername);
+//     }
+// }, []);
 
-    fetchAffirmations();
-}, []);
+useEffect(() => {
+  const fetchAffirmations = async () => {
+      try {
+          if (username) {
+              const response = await axios.get(`http://127.0.0.1:3000/api/affirmations/${username}`);
+              setAffirmations(response.data);
+          }
+      } catch (error) {
+          console.error('Error fetching affirmations:', error);
+      }
+  };
+
+  fetchAffirmations();
+}, [username]);
+
   return (
     <div className='affirmation-section'>
     <h3>Your Affirmations</h3>

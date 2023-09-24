@@ -1,5 +1,5 @@
 const Affirmation = require('../models/Affirmation')
-
+const User = require('../models/User')
 //get all affirmations
 async function getAffirmations(req,res,next){
     try{
@@ -13,10 +13,15 @@ async function getAffirmations(req,res,next){
 }
 //get single affirmation
 async function getSingleAffirmation(req, res, next) {
-    const userId = req.params.id; // Assuming you have authentication middleware setting req.user with the user info
+    const { username } = req.params;
 
     try {
-        const affirmations = await Affirmation.find({ author: userId }).lean();
+        const user = await User.findOne({ username });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        const affirmations = await Affirmation.find({ author: user._id }).lean();
         res.status(200).json(affirmations);
     } catch (err) {
         console.log(err);

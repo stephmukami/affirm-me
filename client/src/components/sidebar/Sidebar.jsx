@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './sidebar.css'
 export default function Sidebar() {
 
@@ -12,6 +13,9 @@ export default function Sidebar() {
     <div className='sidebar'>
       SIDEBAR
       <button onClick={handleLogout}>LOG OUT</button>
+      <Link to='/new-affirmation'>
+        <button>ADD NEW AFFIRMATION</button>
+      </Link>
       </div>
     </>
     

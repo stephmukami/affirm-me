@@ -13,7 +13,7 @@ router.use((req, res, next) => {
   });
 router.get('/',affirmController.getAffirmations);
 
-router.get('/:id',affirmController.getSingleAffirmation);
+router.get('/:username',affirmController.getSingleAffirmation);
 
 router.post('/',affirmController.createAffirmation);
 
