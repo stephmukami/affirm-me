@@ -1,11 +1,12 @@
 import React from 'react'
 import './affirmationSection.css'
-function SingleAffirmation({affirmation}) {
+function SingleAffirmation({affirmation,time}) {
   return (
     <>
         <div className='single-affirmation'>
             <div a-text> 
                 <p>{affirmation}</p>
+                <p>{new Date(time).toDateString()}</p>
             </div>
 
             <div className='controls'>

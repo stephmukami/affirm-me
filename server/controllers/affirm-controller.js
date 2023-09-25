@@ -30,10 +30,6 @@ async function getSingleAffirmation(req, res, next) {
   }
   
   
-  
-  
-  
-  
 //post affirmations  (find a way to get the username and user id when the person is logged in)
 async function createAffirmation(req,res,next){
     const {affirmation,author} = req.body;
@@ -58,7 +54,7 @@ async function createAffirmation(req,res,next){
 async function updateAffirmation(req, res, next) {
     try {
         // Check if the Affirmation exists
-        const existingAffirmation = await Affirmation.findById(req.params.id);
+        const existingAffirmation = await Affirmation.findById(req.params.username);
 
         if (!existingAffirmation) {
             return res.status(404).json({ error: 'Affirmation not found' });

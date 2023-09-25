@@ -8,6 +8,7 @@ import Create from './pages/create-page/Create'
 import { useState ,useEffect} from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { UserContext } from './Context/UserContext'
+import OthersPage from './pages/others-page/Otherspage'
 function App() {
   const storedUserValue = JSON.parse(localStorage.getItem('userValue'));
   const [userValue, setUserValue] = useState(storedUserValue || null);
@@ -29,6 +30,8 @@ function App() {
             <Route path ="/login" element = {<Login/>}/>
             <Route path="/home" element = {<Home/>}/>
             <Route path="/create" element = {<Create/>}/>
+            <Route path="/others" element = {<OthersPage/>}/>
+
           </Routes>
        
       </BrowserRouter>

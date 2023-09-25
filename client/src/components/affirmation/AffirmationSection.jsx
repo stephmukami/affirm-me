@@ -9,15 +9,7 @@ export default  function  AffirmationSection() {
   //const [username, setUsername] = useState('');
   const { userValue } = useContext(UserContext);
   const username = userValue.username;
-//   useEffect(() => {
-//     // Fetch the username from local storage
-//     const storedUsername = localStorage.getItem('username');
-//     console.log('stored username');
-//     console.log(storedUsername);
-//     if (storedUsername) {
-//         setUsername(storedUsername);
-//     }
-// }, []);
+
 
 useEffect(() => {
   const fetchAffirmations = async () => {
@@ -39,7 +31,11 @@ useEffect(() => {
     <h3>Your Affirmations</h3>
     {affirmations.length > 0 ? (
         affirmations.map((affirmation) => (
-            <SingleAffirmation key={affirmation._id} affirmation={affirmation.affirmation} />
+            <SingleAffirmation
+             key={affirmation._id}
+              affirmation={affirmation.affirmation}
+              time = {affirmation.updatedAt}
+               />
         ))
     ) : (
         <p>Add new affirmation</p>

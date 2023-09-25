@@ -16,6 +16,14 @@ export default function Sidebar() {
       <Link to='/create'>
         <button>ADD NEW AFFIRMATION</button>
       </Link>
+
+      <Link to='/others'>
+        <button>VIEW OTHERS USERS</button>
+      </Link>
+
+      <Link className="link" to="/home">
+                <button>BACK TO HOME</button>
+        </Link>
       </div>
     </>
     
