@@ -35,6 +35,7 @@ useEffect(() => {
              key={affirmation._id}
               affirmation={affirmation.affirmation}
               time = {affirmation.updatedAt}
+              id = {affirmation._id}
                />
         ))
     ) : (

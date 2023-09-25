@@ -54,7 +54,7 @@ async function createAffirmation(req,res,next){
 async function updateAffirmation(req, res, next) {
     try {
         // Check if the Affirmation exists
-        const existingAffirmation = await Affirmation.findById(req.params.username);
+        const existingAffirmation = await Affirmation.findById(req.params.id);
 
         if (!existingAffirmation) {
             return res.status(404).json({ error: 'Affirmation not found' });
