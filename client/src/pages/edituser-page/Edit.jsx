@@ -11,30 +11,20 @@ function Edit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        try {
-          // Get the username from the userValue context
-          const username = userValue.username;
-    
-          // Make the POST request
-          const response = await axios.post('http://127.0.0.1:3000/api/affirmations', {
-            affirmation: post,
-            author: username,  // Add the username to the request body
-          });
-    
-          console.log('Affirmation created:', response.data);
-          setConfirm('Affirmation posted successfully')
-          setPost('');
-        } catch (error) {
-          console.error('Error creating affirmation:', error);
-          setConfirm('Error posting affirmation,try again later')
-          setPost('');
-        }
-      };
+    }
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
         <div>
-            <label htmlFor="affirmation">Enter affirmation</label>
+            <label htmlFor="username">Enter  new username</label>
+            <input type="text" 
+            value = {post}
+            onChange = {(e)=>setPost(e.target.value)}
+
+            />
+            </div>
+             <div>
+            <label htmlFor="affirmation">Enter  new password</label>
             <input type="text" 
             value = {post}
             onChange = {(e)=>setPost(e.target.value)}
