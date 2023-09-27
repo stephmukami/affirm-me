@@ -73,40 +73,40 @@ async function getSingleUser(req, res, next) {
 
 //edit user 
 
-
 async function editUser(req, res, next) {
-  const { id } = req.params;
+  const { username } = req.params;
   const updateData = req.body;
 
   try {
-      const user = await User.findById(id);
+    const user = await User.findOne({ username });
 
-      if (!user) {
-          return res.status(404).json({ error: 'User not found' });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Check if a new password is being provided
+    if (updateData.password) {
+      // Hash the new password using bcrypt
+      try {
+        const hashedPassword = await bcrypt.hash(updateData.password, saltRounds);
+        updateData.password = hashedPassword;
+      } catch (error) {
+        return res.status(500).json({ error: 'Error hashing the password' });
       }
+    }
 
-      // Check if a new password is being provided
-      if (updateData.password) {
-          // Hash the new password using bcrypt
-          try {
-              const hashedPassword = await bcrypt.hash(updateData.password, saltRounds);
-              updateData.password = hashedPassword;
-          } catch (error) {
-              return res.status(500).json({ error: 'Error hashing the password' });
-          }
-      }
+    // Update the user data
+    const updatedUser = await User.findOneAndUpdate({ username }, { $set: updateData }, { new: true });
 
-      // Update the user data
-      const updatedUser = await User.findByIdAndUpdate(id, { $set: updateData }, { new: true });
-
-      const { password, ...others } = updatedUser._doc;
-      res.status(200).json(others);
+    const { password, ...others } = updatedUser._doc;
+    res.status(200).json(others);
 
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'An error occurred while updating the user' });
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while updating the user' });
   }
 }
+
 //delete user
 async function deleteUser(req, res, next) {
     try {

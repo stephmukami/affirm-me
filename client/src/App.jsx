@@ -4,6 +4,7 @@ import Landing from './pages/landing-page/Landing'
 import Login from './pages/login-page/Login'
 import Register from './pages/register/Register'
 import Home from './pages/home-page/Home'
+import Edit from './pages/edituser-page/Edit'
 import Create from './pages/create-page/Create'
 import { useState ,useEffect} from 'react'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
@@ -31,6 +32,7 @@ function App() {
             <Route path="/home" element = {<Home/>}/>
             <Route path="/create" element = {<Create/>}/>
             <Route path="/others" element = {<OthersPage/>}/>
+            <Route path="/edit-user" element = {<Edit/>}/>
 
           </Routes>
        
