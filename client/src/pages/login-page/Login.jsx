@@ -1,9 +1,9 @@
 import React ,{useState,useEffect,useContext} from 'react'
 import {Link} from 'react-router-dom';
 import axios from'axios';
+import './login.css'
 import { UserContext } from '../../Context/UserContext';
 export default function Login(){
-
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const {userValue,setUserValue} = useContext(UserContext);
@@ -27,17 +27,21 @@ export default function Login(){
               setUserValue(updatedUserValue);
             localStorage.setItem('token',token);
             localStorage.setItem('userValue', JSON.stringify(updatedUserValue));     
-           res.data && window.location.replace("/home");
+           setPassword('');
+           setUsername('');
+            res.data && window.location.replace("/home");
         }catch(err){
             console.log('error occurred');
             console.log(err);
             setError('Incorrect username or password');
+            setPassword('');
+            setUsername('');
         };
     }
 
 
     return(
-        <>
+        <div className='login-container'>
         <h2>Log in to your account</h2>
         <form action="" onSubmit={handleSubmit}>
             <div>
@@ -55,14 +59,17 @@ export default function Login(){
                  onChange = {(e)=>setPassword(e.target.value)}
                  />
             </div>
+            <div className="buttons">
             <button type='submit'>LOGIN</button>
             <Link className="link" to="/">
                 <button>BACK</button>
             </Link>
+            </div>
+           
         </form>
-        <p className='login-error'>
+        <p className='error'>
         {error && error}
         </p>
-        </>
+        </div>
     )
 }

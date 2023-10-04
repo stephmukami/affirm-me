@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
+  .register-container{
+    background: var(--accent);
+    height: 100vh;
+  }
+  .register-container h2{
+    color: var(--primary);
+    text-align: center;
+    padding: 30px;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  form{
+    border: 3px solid var(--primary);
+    max-width: 380px;
+    border-radius: 10px;
+    padding: 5px;
+    min-height: 300px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+ form div{
+  margin: 20px;
+  padding: 3px;
+ }
+ label{
+  margin-right: 20px;
+ }
+ input{
+  outline: none;
+  background-color: var(--accent);
+  border: none;
+  border-bottom: 1px solid var(--primary);
+  width: 80%;
+ }
+ form button{
+  background-color: var(--accent);
+  color: var(--primary);
+  width: 90px;
+  border-radius: 10px;
+  height: 40px;
+  margin: 10px;
+  padding: 2px;
+ }
+ .link{
+padding:0px; 
+}
+ ::placeholder{
+  color: white;
+ }
+ form button:hover{
+  color: white;
+  background-color: var(--primary);
+  border: none;
+ }
+ .register-container .buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ @media (max-width: 890px) and (min-width: 320px) {
+  form {
+    min-width: 65vw;
+  }
+ }

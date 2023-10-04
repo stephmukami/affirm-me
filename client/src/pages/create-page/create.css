@@ -7,11 +7,15 @@
     --primary: #063b59;
     --accent: #b7e2ff;
   }
-  .login-container{
+  .create-container{
     background: var(--accent);
     height: 100vh;
   }
-  .login-container h2{
+  .create-container ::placeholder{
+    color: var(--primary);
+    font-size: 18px;
+  }
+  .create-container h2{
     color: var(--primary);
     text-align: center;
     padding: 30px;
@@ -31,15 +35,19 @@
   margin: 20px;
   padding: 3px;
  }
+ .text-div{
+    padding: 20px;
+ }
  label{
   margin-right: 20px;
+  margin-bottom: 10px;
  }
  input{
   outline: none;
   background-color: var(--accent);
   border: none;
   border-bottom: 1px solid var(--primary);
-  width: 80%;
+  width: 300px;
  }
  form button{
   background-color: var(--accent);
@@ -49,6 +57,11 @@
   height: 40px;
   margin: 10px;
   padding: 2px;
+ }
+ .error{
+    color: red;
+    text-align: center;
+    margin: 15px;
  }
  .link{
 padding:0px; 

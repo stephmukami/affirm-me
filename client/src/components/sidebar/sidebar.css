@@ -1,6 +1,43 @@
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
 .sidebar{
     flex: 3;
     display: flex;
     border: 1px solid red;
     flex-direction: column;
+    background-color: var(--primary) ;
+    color: white;
+}
+.sidebar h3{
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    margin: 10px;
+}
+.action{
+    text-decoration: none;
+}
+.action h4{
+    color: white;
+    border: 1px solid red;
+    font-size: 18px;
+    font-weight: 400;
+}
+h4{
+    color: white;
+    border: 1px solid red;
+    font-size: 18px;
+    font-weight: 400;   
+    margin: 10px;
+}
+.log-out{
+    display: flex;
+    align-items: center;
+}
+svg{
+    height: 20px;
+    width: 20px;
+    fill: white;
 }

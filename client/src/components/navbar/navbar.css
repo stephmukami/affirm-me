@@ -1,3 +1,12 @@
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
 .navbar{
-    border: 1px solid green;
+    background-color: var(--accent);
+}
+.navbar h2{
+    padding: 25px;
+    font-size: 25px;
+    
 }

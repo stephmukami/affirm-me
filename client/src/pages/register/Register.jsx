@@ -1,8 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from "axios";
-export default function Register(){
+import './register.css';
 
+export default function Register(){
 const [error,setError] = useState(false);
 const [details,setDetails] = useState(
     {
@@ -45,8 +46,8 @@ const [details,setDetails] = useState(
  
 
     return(
-        <>
-        <h2>Register as a new user</h2>
+        <div className='register-container'>
+        <h2>Register as a new user 🤩</h2>
         <form onSubmit={handleSubmit}>
 
             <div>
@@ -79,12 +80,16 @@ const [details,setDetails] = useState(
                 onChange={(e)=>handleChange(e)}
                 />
             </div>
-            
-            <button type='submit'>REGISTER</button>
+            <div className="buttons">
+            <button className='register-btn' type='submit'>REGISTER</button>
             <Link className="link" to="/">
                 <button>BACK</button>
             </Link>
+            </div>
         </form>
-        </>
+        <p className='error'>
+        {error && error}
+        </p>
+        </div>
     )
 }

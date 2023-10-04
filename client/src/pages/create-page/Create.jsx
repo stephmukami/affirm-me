@@ -3,6 +3,7 @@ import {useState,useContext} from 'react'
 import {Link} from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import axios from 'axios';
+import './create.css';
 function Create() {
     const [post,setPost] = useState('')
     const { userValue } = useContext(UserContext);
@@ -31,22 +32,25 @@ function Create() {
         }
       };
   return (
-    <div>
+    <div className='create-container'>
+      <h2>Add your affirmation</h2>
       <form action="" onSubmit={handleSubmit}>
-        <div>
-            <label htmlFor="affirmation">Enter affirmation</label>
+        <div className='text-div'>
             <input type="text" 
             value = {post}
             onChange = {(e)=>setPost(e.target.value)}
-
+            placeholder='Enter affirmation'
             />
         </div>
-        <button>SUBMIT</button>
+        <div className="buttons">
+          <button>SUBMIT</button>
+          <Link className="link" to="/home">
+                  <button>BACK</button>
+          </Link>
+        </div>
       </form>
-      <p>{ confirm && confirm}</p>
-      <Link className="link" to="/home">
-                <button>BACK</button>
-        </Link>
+      <p className='error'>{ confirm && confirm}</p>
+     
     </div>
   )
 }

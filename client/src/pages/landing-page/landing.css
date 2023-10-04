@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
+  
+.landing-container{
+    border: 1px solid red;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 50px;
+    text-align: center;
+    background-image: linear-gradient(to left top, #dcd9e4, #d9d9e8, #d4d9eb, #ced9ee, #c6daf1, #bedef4, #b7e3f5, #b1e7f3, #b1eeee, #b8f4e5, #c7f8da, #dbfbcf);
+}
+.landing-container h1,h4{
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary);
+    font-size:40px;
+}
+.landing-container h4{
+    font-size: 20px;
+}
+.to-register{
+    margin-bottom: 15px;
+}
+.landing-container h2{
+    font-family: 'Hind Madurai', sans-serif;
+    color: var(--primary);
+    font-size: 30px;
+}
+.landing-container h3{
+    color: var(--primary);
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+}
+.landing-container a :hover{
+    text-decoration: underline;
+}

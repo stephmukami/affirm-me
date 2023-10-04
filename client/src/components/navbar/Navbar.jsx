@@ -9,7 +9,9 @@ export default function Navbar() {
       <div className='navbar'>
         {userValue && (
           <div>
-            Hello, {userValue.username}. 
+            <h2>
+              Hello, {userValue.username}. 😊 
+            </h2>
           </div>
         )}
       </div>
