@@ -1,11 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './sidebar.css'
-export default function Sidebar() {
+export default function Sidebar({ toggleSidebar }) {
 
   const handleLogout = ()=>{
   localStorage.clear();
     window.location.href = '/';
+  };
+
+  const handleSidebarToggle = () => {
+    console.log(" sidebar sth happens");
+
+    toggleSidebar();
   };
 
   return (
@@ -24,7 +30,7 @@ export default function Sidebar() {
             <h4  onClick={handleLogout}>Log out</h4>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>logout</title><path d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z" /></svg>
         </div>
-        <h4>Close sidebar</h4>
+        <h4 onClick={handleSidebarToggle}>Close sidebar</h4>
       </div>
     </>
     

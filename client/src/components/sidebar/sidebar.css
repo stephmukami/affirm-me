@@ -9,6 +9,7 @@
     flex-direction: column;
     background-color: var(--primary) ;
     color: white;
+    transition: transform 0.3s ease-in-out;
 }
 .sidebar h3{
     text-transform: uppercase;
