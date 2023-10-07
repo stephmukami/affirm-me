@@ -60,3 +60,9 @@
     width: 60px;
     padding: 5px;
 }
+.prompt{
+    color: var(--primary);
+    text-align: center;
+    font-weight: 600;
+    margin: 10px;
+}
