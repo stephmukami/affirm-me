@@ -71,14 +71,14 @@ function SingleAffirmation({ affirmation, time, id, onAffirmationUpdated }) {
   return (
     <>
       <div className='single-affirmation'>
-        <div a-text>
+        <div className ='a-text'>
           {isEditing ? (
             <textarea
               value={editedAffirmation}
               onChange={(e) => setEditedAffirmation(e.target.value)}
             />
           ) : (
-            <p>{affirmation}</p>
+            <p className='affirm-p'>{affirmation}</p>
           )}
           <p>{new Date(time).toDateString()}</p>
         </div>
@@ -100,7 +100,7 @@ function SingleAffirmation({ affirmation, time, id, onAffirmationUpdated }) {
           className='delete-icon'
           onClick={handleDelete}
            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>
-          <button>next</button>
+          <button className='next-btn'>next</button>
         </div>
       </div>
     </>

@@ -19,4 +19,10 @@
 }
 .toggle-btn:hover{
     color: var(--accent);
+    position: absolute;
+}
+@media (max-width: 428px) and (min-width: 320px) {
+    .home-page{
+        display: block;
+    }
 }

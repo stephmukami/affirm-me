@@ -17,17 +17,46 @@
     width: 20px;
     fill: var(--primary);
 }
+.single-affirmation div{
+    margin: 25px;
+}
+.a-text{
+    min-width: 350px;
+    max-width: inherit;
+}
+.affirm-p{
+    margin-bottom: 30px;
+    border: 1px solid red;
+    font-weight: bold;
+
+}
 .single-affirmation{
     display: flex;
     flex-direction: column;
     border: 1px solid brown;
-    background: rgba(183,226,255,0.5);
+    background: rgba(192, 228, 252, 0.5);
     -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(183,226,255,0.25);
+    max-width: 400px;
+    min-height: 200px;
+    border: 6px solid var(--primary);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 .controls{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 200px;
+}
+.next-btn{
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 60px;
+    padding: 5px;
 }
