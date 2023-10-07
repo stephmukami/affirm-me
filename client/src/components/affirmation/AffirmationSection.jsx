@@ -28,7 +28,7 @@ useEffect(() => {
 
   return (
     <div className='affirmation-section'>
-    <h3>Your Affirmations</h3>
+    <h3>Your Affirmations 🥠</h3>
     {affirmations.length > 0 ? (
         affirmations.map((affirmation) => (
             <SingleAffirmation

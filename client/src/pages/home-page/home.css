@@ -1,5 +1,22 @@
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
 .home-page{
     display: flex;
     background-color: #fdfdfd;
     height: 100vh;
+}
+.toggle-btn{
+    color: red;
+    height: 40px;
+    margin: 20px;
+    background-color: var(--primary);
+    color: white;
+    width: 110px;
+    border-radius: 10px;
+    height: 40px;
+}
+.toggle-btn:hover{
+    color: var(--accent);
 }

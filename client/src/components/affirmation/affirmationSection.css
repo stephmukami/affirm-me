@@ -1,15 +1,30 @@
+:root {
+    --primary: #063b59;
+    --accent: #b7e2ff;
+  }
 .affirmation-section{
     flex:8;
     border: 1px solid purple;
 }
-svg{
+.affirmation-section h3{
+    font-size: 30px;
+    text-align: center;
+    margin: 15px;
+    color: var(--primary);
+}
+ .single-affirmation svg{
     height:20px;
     width: 20px;
+    fill: var(--primary);
 }
 .single-affirmation{
     display: flex;
     flex-direction: column;
     border: 1px solid brown;
+    background: rgba(183,226,255,0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(183,226,255,0.25);
 }
 .controls{
     display: flex;

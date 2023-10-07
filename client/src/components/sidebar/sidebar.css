@@ -31,7 +31,11 @@ h4{
     border: 1px solid red;
     font-size: 18px;
     font-weight: 400;   
+    cursor: pointer;
     margin: 10px;
+}
+h4:hover{
+    color: var(--accent);
 }
 .log-out{
     display: flex;
