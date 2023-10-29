@@ -13,7 +13,7 @@ function Edit() {
     e.preventDefault();
 
     // Construct the request URL using the username
-    const requestURL = `http://127.0.0.1:3000/users/${userValue.username}`;
+    const requestURL = `https://new-affirm-me-backend.onrender.com/users/${userValue.username}`;
 
     // Construct the request headers with the token
     const headers = {

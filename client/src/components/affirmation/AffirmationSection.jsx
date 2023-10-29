@@ -15,7 +15,7 @@ const AffirmationSection = () => {
     const fetchAffirmations = async () => {
       try {
         if (username) {
-          const response = await axios.get(`http://127.0.0.1:3000/api/affirmations/${username}`);
+          const response = await axios.get(`https://new-affirm-me-backend.onrender.com/api/affirmations/${username}`);
           setAffirmations(response.data);
           setCurrentAffirmationIndex(0); // Reset current affirmation index when fetching new affirmations
         }

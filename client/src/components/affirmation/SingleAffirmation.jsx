@@ -21,7 +21,7 @@ function SingleAffirmation({ affirmation, time, id, getNextAffirmation }) {
   
     // Set up Axios with the authorization header
     const axiosInstance = axios.create({
-      baseURL: 'http://127.0.0.1:3000', // Replace with your API URL
+      baseURL: 'https://new-affirm-me-backend.onrender.com', // Replace with your API URL
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${bearerToken}` // Include the bearer token
@@ -48,7 +48,7 @@ function SingleAffirmation({ affirmation, time, id, getNextAffirmation }) {
   
     // Set up Axios with the authorization header
     const axiosInstance = axios.create({
-      baseURL: 'http://127.0.0.1:3000', // Replace with your API URL
+      baseURL: 'https://new-affirm-me-backend.onrender.com', // Replace with your API URL
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${bearerToken}` // Include the bearer token

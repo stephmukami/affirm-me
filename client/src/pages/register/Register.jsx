@@ -26,7 +26,7 @@ const [details,setDetails] = useState(
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try{
-        const res = await axios.post('http://127.0.0.1:3000/api/users',
+        const res = await axios.post('https://new-affirm-me-backend.onrender.com/api/users',
             {
                 username: details.username,
                 email:details.email,
