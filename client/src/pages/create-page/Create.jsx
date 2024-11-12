@@ -1,4 +1,3 @@
-import React from 'react'
 import {useState,useContext} from 'react'
 import {Link} from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
@@ -17,7 +16,7 @@ function Create() {
           const username = userValue.username;
     
           // Make the POST request
-          const response = await axios.post('https://new-affirm-me-backend.onrender.com/api/affirmations', {
+          const response = await axios.post('http://localhost:3000/api/affirmations', {
             affirmation: post,
             author: username,  // Add the username to the request body
           });

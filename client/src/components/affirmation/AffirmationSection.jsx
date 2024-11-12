@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import  { useEffect, useState, useContext } from 'react';
 import './affirmationSection.css';
 import axios from 'axios';
 import SingleAffirmation from './SingleAffirmation';
@@ -47,13 +47,13 @@ const AffirmationSection = () => {
             />
 
           ) : (
-            <p className='prompt'>Click "Next" to view an affirmation</p>
+            <p className='prompt'>Click Next to view an affirmation</p>
           )}
         </div>
       ) : (
         <p>Add new affirmation</p>
       )}
-        <p className='prompt'>Click "Next" to view an affirmation</p>
+        <p className='prompt'>Click Next to view an affirmation</p>
 
     </div>
   );

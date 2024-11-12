@@ -1,4 +1,4 @@
-import React ,{useState,useEffect,useContext} from 'react'
+import {useState,useContext} from 'react'
 import {Link} from 'react-router-dom';
 import axios from'axios';
 import './login.css'
@@ -12,7 +12,7 @@ export default function Login(){
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try{
-            const res = await axios.post('https://new-affirm-me-backend.onrender.com/api/login' ,{
+            const res = await axios.post('http://localhost:3000/api/login' ,{
                 username,
                 password
             });
@@ -36,7 +36,7 @@ export default function Login(){
             setError('Incorrect username or password');
             setPassword('');
             setUsername('');
-        };
+        }
     }
 
 
